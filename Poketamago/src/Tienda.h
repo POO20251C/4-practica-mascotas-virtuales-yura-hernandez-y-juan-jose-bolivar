@@ -4,10 +4,13 @@
 
 #ifndef TIENDA_H
 #define TIENDA_H
+
+
 #include "Objeto.h"
 #include <string>
+#include <vector>
 
-class Tienda{
+class Tienda {
   private:
      std::string nombre;
      std::vector <Objeto*> disponibles;
@@ -15,17 +18,13 @@ class Tienda{
   public:
     Tienda(std::string nombre);
 
-    std::string getNombre() ;
+    std::string getNombre();
     void setNombre(std::string nombre);
 
-    std::vector <Objeto*> getDisponibles();
-    void setDisponibles(Objeto* disponibles);
-    void setDisponibles(nombre* disponibles);
+    void setVectorObjetos(std::vector<Objeto*> nuevosObjetos);
 
     void agregarObjeto(Objeto* objeto);
     void comprarObjeto(std::string nombre, int cantidad);
 
 };
-
-
 #endif //TIENDA_H

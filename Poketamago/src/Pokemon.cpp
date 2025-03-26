@@ -3,6 +3,7 @@
 //
 
 #include "Pokemon.h"
+#include "Truco.h"
 
 
 Pokemon::Pokemon(std::string name, std::string entrenador) {
@@ -65,8 +66,7 @@ std::string Pokemon::hacerTruco(std::string nombre) {
         if (trucos[i]->getNombre() == nombre) {
             ans += this->nombre + " hizo " + trucos[i]->getNombre() + " y gano " + std::to_string(trucos[i]->getXp()) + "XP\n";
             this->xp += trucos[i]->getXp();
-            int animonuevo = int(trucos[i]->getAnimo);
-            this->barraDeAnimo += animonuevo;
+            this->barraDeAnimo += trucos[i]->getAnimo();
         }
     }
     return ans;

@@ -4,36 +4,35 @@
 
 #ifndef OBJETO_H
 #define OBJETO_H
-#include <iostream>
 #include <string>
-#include "Entrenador.h"
 
 using namespace std;
 
-class Objeto{
+class Objeto {
 
-  private:
+private:
 
-    string nombre;
-    int precio;
-    int saciedad;
-    int xp;
-    int stock;
+  string nombre;
+  int precio;
+  int saciedad;
+  int xp;
+  int stock;
 
-  public:
+public:
 
-    Objeto(string nombre, int precio, int saciedad, int xp, int stock);
-    string getNombre();
-    int getPrecio();
-    int getSaciedad();
-    int getXp();
-    int getStock();
+  Objeto(string nombre, int precio, int saciedad, int xp, int stock);
+  string getNombre();
+  int getPrecio();
+  int getSaciedad();
+  int getXp();
+  int getStock();
 
-    int setNombre(string nombre);
-    int setPrecio(int precio);
-    int setSaciedad(int saciedad);
-    int setXp(int xp);
-    int setStock(int stock);
+  void setNombre(string nombre);
+  void setPrecio(int precio);
+  void setSaciedad(int saciedad);
+  void setXp(int xp);
+  void setStock(int stock);
+};
 
 
 #endif //OBJETO_H

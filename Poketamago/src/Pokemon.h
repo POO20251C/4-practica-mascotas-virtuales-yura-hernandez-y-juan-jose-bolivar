@@ -9,7 +9,8 @@
 #include <vector>
 
 #include "Habilidad.h"
-#include "Truco.h"
+
+class Truco;
 
 class Pokemon {
 

@@ -6,6 +6,9 @@
 #include "src/Entrenador.h"
 #include "src/Pokemon.h"
 #include "src/Objeto.h"
+#include "src/Truco.h"
+#include "src/Tienda.h"
+#include "src/Habilidad.h"
 
 using namespace std;
 

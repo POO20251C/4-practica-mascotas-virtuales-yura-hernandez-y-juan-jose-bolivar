@@ -1,4 +1,15 @@
 # ninja log v6
-38	1454	7646994081594758	CMakeFiles/Poketamago.dir/main.cpp.obj	9b6ea334c34f71af
+3	918	7647278648057009	build.ninja	eccc25f3f6b42bfe
+8	5962	7647277685833493	CMakeFiles/Poketamago.dir/main.cpp.obj	9b6ea334c34f71af
 76	1444	7646993677097220	CMakeFiles/Poketamago.dir/src/Habilidad.cpp.obj	833910fcd542fd59
+123	1724	7647274167596791	CMakeFiles/Poketamago.dir/src/Entrenador.cpp.obj	ca3fd14b3064c158
 1455	1785	7646994095754805	Poketamago.exe	36fc4d4887cf4572
+130	1702	7647274167666786	CMakeFiles/Poketamago.dir/src/Tienda.cpp.obj	3beb334e481fa0f5
+7	38475	7647275294189292	CMakeFiles/Poketamago.dir/src/Pokemon.cpp.obj	331ee150c2a93d8a
+4	534	7647278648057009	build.ninja	eccc25f3f6b42bfe
+67	905	7647278650365224	CMakeFiles/Poketamago.dir/src/Objeto.cpp.obj	edbc9d65711af254
+51	1158	7647279534476012	CMakeFiles/Poketamago.dir/src/Truco.cpp.obj	e8c49758c2de59c5
+38	1434	7647279534342957	CMakeFiles/Poketamago.dir/src/Pokemon.cpp.obj	331ee150c2a93d8a
+6	1643	7647279534022957	CMakeFiles/Poketamago.dir/main.cpp.obj	9b6ea334c34f71af
+44	1649	7647279534404610	CMakeFiles/Poketamago.dir/src/Entrenador.cpp.obj	ca3fd14b3064c158
+1649	2061	7647279550456115	Poketamago.exe	68201cfc30fdbe53

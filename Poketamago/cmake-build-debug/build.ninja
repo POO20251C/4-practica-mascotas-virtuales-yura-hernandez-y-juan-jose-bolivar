@@ -73,6 +73,24 @@ build CMakeFiles/Poketamago.dir/src/Entrenador.cpp.obj: CXX_COMPILER__Poketamago
   OBJECT_DIR = CMakeFiles\Poketamago.dir
   OBJECT_FILE_DIR = CMakeFiles\Poketamago.dir\src
 
+build CMakeFiles/Poketamago.dir/src/Tienda.cpp.obj: CXX_COMPILER__Poketamago_unscanned_Debug D$:/Escritorio/Javeriana/Semestre$ #3/POO/Tareas/4-practica-mascotas-virtuales-yura-hernandez-y-juan-jose-bolivar/Poketamago/src/Tienda.cpp || cmake_object_order_depends_target_Poketamago
+  DEP_FILE = CMakeFiles\Poketamago.dir\src\Tienda.cpp.obj.d
+  FLAGS = -g -std=gnu++20 -fdiagnostics-color=always
+  OBJECT_DIR = CMakeFiles\Poketamago.dir
+  OBJECT_FILE_DIR = CMakeFiles\Poketamago.dir\src
+
+build CMakeFiles/Poketamago.dir/src/Truco.cpp.obj: CXX_COMPILER__Poketamago_unscanned_Debug D$:/Escritorio/Javeriana/Semestre$ #3/POO/Tareas/4-practica-mascotas-virtuales-yura-hernandez-y-juan-jose-bolivar/Poketamago/src/Truco.cpp || cmake_object_order_depends_target_Poketamago
+  DEP_FILE = CMakeFiles\Poketamago.dir\src\Truco.cpp.obj.d
+  FLAGS = -g -std=gnu++20 -fdiagnostics-color=always
+  OBJECT_DIR = CMakeFiles\Poketamago.dir
+  OBJECT_FILE_DIR = CMakeFiles\Poketamago.dir\src
+
+build CMakeFiles/Poketamago.dir/src/Objeto.cpp.obj: CXX_COMPILER__Poketamago_unscanned_Debug D$:/Escritorio/Javeriana/Semestre$ #3/POO/Tareas/4-practica-mascotas-virtuales-yura-hernandez-y-juan-jose-bolivar/Poketamago/src/Objeto.cpp || cmake_object_order_depends_target_Poketamago
+  DEP_FILE = CMakeFiles\Poketamago.dir\src\Objeto.cpp.obj.d
+  FLAGS = -g -std=gnu++20 -fdiagnostics-color=always
+  OBJECT_DIR = CMakeFiles\Poketamago.dir
+  OBJECT_FILE_DIR = CMakeFiles\Poketamago.dir\src
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target Poketamago
@@ -81,7 +99,7 @@ build CMakeFiles/Poketamago.dir/src/Entrenador.cpp.obj: CXX_COMPILER__Poketamago
 #############################################
 # Link the executable Poketamago.exe
 
-build Poketamago.exe: CXX_EXECUTABLE_LINKER__Poketamago_Debug CMakeFiles/Poketamago.dir/main.cpp.obj CMakeFiles/Poketamago.dir/src/Habilidad.cpp.obj CMakeFiles/Poketamago.dir/src/Pokemon.cpp.obj CMakeFiles/Poketamago.dir/src/Entrenador.cpp.obj
+build Poketamago.exe: CXX_EXECUTABLE_LINKER__Poketamago_Debug CMakeFiles/Poketamago.dir/main.cpp.obj CMakeFiles/Poketamago.dir/src/Habilidad.cpp.obj CMakeFiles/Poketamago.dir/src/Pokemon.cpp.obj CMakeFiles/Poketamago.dir/src/Entrenador.cpp.obj CMakeFiles/Poketamago.dir/src/Tienda.cpp.obj CMakeFiles/Poketamago.dir/src/Truco.cpp.obj CMakeFiles/Poketamago.dir/src/Objeto.cpp.obj
   FLAGS = -g
   LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\Poketamago.dir

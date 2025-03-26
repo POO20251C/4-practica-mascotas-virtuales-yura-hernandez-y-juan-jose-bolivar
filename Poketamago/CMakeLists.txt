@@ -9,4 +9,13 @@ add_executable(Poketamago main.cpp
         src/Pokemon.cpp
         src/Pokemon.h
         src/Entrenador.cpp
-        src/Entrenador.h)
+        src/Entrenador.h
+        src/Tienda.h
+        src/Tienda.cpp
+        src/Truco.h
+        src/Truco.cpp
+        src/Objeto.h
+        src/Objeto.cpp
+
+
+)
