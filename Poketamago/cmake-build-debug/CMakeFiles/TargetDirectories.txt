@@ -1,0 +1,3 @@
+D:/Escritorio/Javeriana/Semestre #3/POO/Tareas/4-practica-mascotas-virtuales-yura-hernandez-y-juan-jose-bolivar/Poketamago/cmake-build-debug/CMakeFiles/Poketamago.dir
+D:/Escritorio/Javeriana/Semestre #3/POO/Tareas/4-practica-mascotas-virtuales-yura-hernandez-y-juan-jose-bolivar/Poketamago/cmake-build-debug/CMakeFiles/edit_cache.dir
+D:/Escritorio/Javeriana/Semestre #3/POO/Tareas/4-practica-mascotas-virtuales-yura-hernandez-y-juan-jose-bolivar/Poketamago/cmake-build-debug/CMakeFiles/rebuild_cache.dir
