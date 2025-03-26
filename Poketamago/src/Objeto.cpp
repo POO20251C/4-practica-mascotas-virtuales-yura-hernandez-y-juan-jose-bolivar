@@ -3,6 +3,7 @@
 //
 
 #include "Objeto.h"
+#include <string>
 
 
 Objeto::Objeto(std::string nombre, int precio, int saciedad, int xp, int stock) {
@@ -12,27 +13,27 @@ Objeto::Objeto(std::string nombre, int precio, int saciedad, int xp, int stock) 
     this->xp = xp;
     this->stock = stock;
 }
-std::string Objeto::getNombre() const {
+std::string Objeto::getNombre()  {
     return nombre;
 }
 
-int Objeto::getPrecio() const {
+int Objeto::getPrecio()  {
     return precio;
 }
 
-int Objeto::getSaciedad() const {
+int Objeto::getSaciedad()  {
     return saciedad;
 }
 
-int Objeto::getXp() const {
+int Objeto::getXp()  {
     return xp;
 }
 
-int Objeto::getStock() const {
+int Objeto::getStock()  {
     return stock;
 }
 
-// Setters
+
 void Objeto::setNombre(std::string nombre) {
     this->nombre = nombre;
 }
