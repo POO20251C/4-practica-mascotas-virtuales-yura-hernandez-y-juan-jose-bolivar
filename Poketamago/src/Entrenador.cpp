@@ -68,11 +68,3 @@ std::string Entrenador::verInformacionGeneral() {
 std::string Entrenador::verInformacionPokemon(std::string nombre) {
     return this->pokemones[nombre]->mostrarInfo();
 }
-
-
-
-
-
-
-
-
