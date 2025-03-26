@@ -3,27 +3,22 @@
 //
 
 #include "Truco.h"
-#include <string>
 
-
-
-Truco::Truco(std::string nombre, int xp, std::string animo) {
-
-  this->setNombre(nombre);
-  this->setXp(xp);
-  this->setAnimo(animo);
-
+Truco::Truco(std::string nombre, int xp, int animo){
+  this->nombre = nombre;
+  this->xp = xp;
+  this->animo = animo;
 }
 
 std::string Truco::getNombre() {
   return nombre;
 }
 
-std::string Truco::getAnimo() {
+int Truco::getAnimo() {
   return animo;
 }
 
-string Truco::getXp(int xp) {
+int Truco::getXp() {
   return xp;
 }
 

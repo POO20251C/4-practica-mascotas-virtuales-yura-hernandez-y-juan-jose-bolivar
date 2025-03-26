@@ -9,6 +9,7 @@
 #include <vector>
 
 #include "Habilidad.h"
+#include "Truco.h"
 
 class Pokemon {
 
@@ -52,6 +53,7 @@ class Pokemon {
   std::string hacerTruco(std::string nombre);
   int usarHabilidad();
   std::string obtenerHabilidad(std::string nombre);
+  std::string mostrarInfo();
 
   bool evolucionar();
 };

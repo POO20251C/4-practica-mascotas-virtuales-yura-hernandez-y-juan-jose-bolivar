@@ -7,4 +7,6 @@ add_executable(Poketamago main.cpp
         src/Habilidad.cpp
         src/Habilidad.h
         src/Pokemon.cpp
-        src/Pokemon.h)
+        src/Pokemon.h
+        src/Entrenador.cpp
+        src/Entrenador.h)

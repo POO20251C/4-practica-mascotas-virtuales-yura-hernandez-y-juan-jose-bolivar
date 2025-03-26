@@ -10,23 +10,23 @@
 class Truco{
 
   private:
-
-    string nombre;
+    std::string nombre;
     int xp;
     int animo;
 
   public:
-    truco(string nombre, int xp, int animo);
-    string getNombre();
+    Truco(std::string nombre, int xp, int animo);
+    std::string getNombre();
+
     int getXp();
     int getAnimo();
 
-    string setNombre(string nombre);
+    void setNombre(std::string nombre);
     void setXp(int xp);
     void setAnimo(int animo);
 
 
-}
+};
 
 
 #endif //TRUCO_H

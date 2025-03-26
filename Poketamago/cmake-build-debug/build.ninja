@@ -67,6 +67,12 @@ build CMakeFiles/Poketamago.dir/src/Pokemon.cpp.obj: CXX_COMPILER__Poketamago_un
   OBJECT_DIR = CMakeFiles\Poketamago.dir
   OBJECT_FILE_DIR = CMakeFiles\Poketamago.dir\src
 
+build CMakeFiles/Poketamago.dir/src/Entrenador.cpp.obj: CXX_COMPILER__Poketamago_unscanned_Debug D$:/Escritorio/Javeriana/Semestre$ #3/POO/Tareas/4-practica-mascotas-virtuales-yura-hernandez-y-juan-jose-bolivar/Poketamago/src/Entrenador.cpp || cmake_object_order_depends_target_Poketamago
+  DEP_FILE = CMakeFiles\Poketamago.dir\src\Entrenador.cpp.obj.d
+  FLAGS = -g -std=gnu++20 -fdiagnostics-color=always
+  OBJECT_DIR = CMakeFiles\Poketamago.dir
+  OBJECT_FILE_DIR = CMakeFiles\Poketamago.dir\src
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target Poketamago
@@ -75,7 +81,7 @@ build CMakeFiles/Poketamago.dir/src/Pokemon.cpp.obj: CXX_COMPILER__Poketamago_un
 #############################################
 # Link the executable Poketamago.exe
 
-build Poketamago.exe: CXX_EXECUTABLE_LINKER__Poketamago_Debug CMakeFiles/Poketamago.dir/main.cpp.obj CMakeFiles/Poketamago.dir/src/Habilidad.cpp.obj CMakeFiles/Poketamago.dir/src/Pokemon.cpp.obj
+build Poketamago.exe: CXX_EXECUTABLE_LINKER__Poketamago_Debug CMakeFiles/Poketamago.dir/main.cpp.obj CMakeFiles/Poketamago.dir/src/Habilidad.cpp.obj CMakeFiles/Poketamago.dir/src/Pokemon.cpp.obj CMakeFiles/Poketamago.dir/src/Entrenador.cpp.obj
   FLAGS = -g
   LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\Poketamago.dir
