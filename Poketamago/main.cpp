@@ -79,12 +79,22 @@ int main() {
 
                         for (const auto &i : entrenadoresEnJuego[nombre]->getPokemones()) {
                             if (i.second->evolucionar()) {
-                                string nombreHabilidad;
-                                cout << "El pokemon " << i.second->getName() << " ha evolucionado y va a ganar una habilidad\n";
-                                cout << "Ingrese el nombre de la habilidad: ";
-                                cin >> nombreHabilidad;
+                                if (i.second->getLvl() % 2 == 0) {
+                                    string nombreHabilidad;
+                                    cout << "El pokemon " << i.second->getName() << " ha evolucionado y va a ganar una habilidad\n";
+                                    cout << "Ingrese el nombre de la habilidad: ";
+                                    cin >> nombreHabilidad;
 
-                                cout << i.second->obtenerHabilidad(nombreHabilidad);
+                                    cout << i.second->obtenerHabilidad(nombreHabilidad);
+                                }
+                                else {
+                                    string nombreTruco;
+                                    cout << "El pokemon " << i.second->getName() << " ha evolucionado y va a aprender un truco\n";
+                                    cout << "Ingrese el nombre del truco: ";
+                                    cin >> nombreTruco;
+                                    cout << i.second->obtenerTruco(nombreTruco);
+                                }
+
                             }
                         }
 
@@ -112,19 +122,22 @@ int main() {
                             for (const auto& k: entrenadoresEnJuego[nombre]->getPokemones()) {
                                 if (k.second->getName() == nombrePokemontruco) {
                                     string truco;
+                                    bool trucoEncontrado = false;
                                     vector<Truco*> trucos = k.second->getTrucos();
                                     cout << k.second->mostrarTrucos();
 
                                     cout << "Ingrese el nombre del truco a realizar: ";
                                     cin >> truco;
                                     // ARREGLAR ESTOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO
-                                    for (int j = 0; j < k.second->getTrucos().size(); j++) {
-                                        if (trucos[j]->getNombre() == truco) {
-                                            cout << k.second->hacerTruco(truco);
+                                    for (const auto& t: trucos) {
+                                        if (truco == t->getNombre()) {
+                                            trucoEncontrado = true;
                                         }
-                                        else {
-                                            cout << "No se encontro ese truco\n";
-                                        }
+                                    }
+                                    if (!trucoEncontrado) {
+                                        cout << "El truco no existe\n";
+                                    }else {
+                                        cout << k.second->hacerTruco(truco) << endl;
                                     }
                                 }
                             }
@@ -199,6 +212,47 @@ int main() {
 
                         }
                         else if (comandoEntrenador == "5") {
+                            string nombreOponente;
+                            Entrenador *oponente;
+                            bool vamoAJugar = false;
+
+                            for (const auto &e : entrenadoresEnJuego) {
+                                cout << e.first << endl;
+                            }
+                            cout << endl;
+
+                            cout << "Ingresa el nombre de tu oponente: ";
+                            cin >> nombreOponente;
+
+                            if (entrenadoresEnJuego[nombreOponente] != nullptr) {
+                                cout << "No se encontro el oponente\n";
+                            }
+                            else if (entrenadoresEnJuego[nombre]->getPokemones().size() == 0) {
+                                cout << "No tienes pokemones para combatir\n";
+                            }
+                            else {
+                                oponente = entrenadoresEnJuego[nombreOponente];
+                                vamoAJugar = true;
+                            }
+
+                            while (vamoAJugar) {
+                                int pokemonesVivos, pokemonesVivosOponente;
+                                pokemonesVivos = entrenadoresEnJuego[nombreOponente]->getPokemones().size();
+                                pokemonesVivosOponente = oponente->getPokemones().size();
+
+                                // Juego
+
+
+
+                                if (pokemonesVivos == 0 ) {
+                                    cout << "Gano " << oponente->getNombre() << "\n";
+                                    vamoAJugar = false;
+                                }
+                                else if (pokemonesVivosOponente == 0) {
+                                    cout << "Gano " << nombre << "\n";
+                                }
+
+                            }
 
                         }
 

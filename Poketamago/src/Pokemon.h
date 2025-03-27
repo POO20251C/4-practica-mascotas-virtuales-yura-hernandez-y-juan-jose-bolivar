@@ -56,7 +56,9 @@ class Pokemon {
   int usarHabilidad();
   std::string obtenerHabilidad(std::string nombre);
   std::string mostrarInfo();
-
+  std::string obtenerTruco(std::string nombre);
+  std::string infoTrucos();
+  std::string infoHabilidades();
 
   bool evolucionar();
 };

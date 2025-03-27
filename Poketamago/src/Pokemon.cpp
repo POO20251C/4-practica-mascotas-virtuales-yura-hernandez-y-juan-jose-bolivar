@@ -14,6 +14,7 @@ Pokemon::Pokemon(std::string name, std::string entrenador) {
     this->xp = 0;
     this->hambre = 0;
     this->estadoDeAnimo = "Normal";
+    this->trucos.push_back(new Truco("Almendruco", rand() % 50, rand() % 50));
 }
 
 Pokemon::~Pokemon() {
@@ -76,12 +77,14 @@ bool Pokemon::evolucionar() {
     bool ans = false;
     if (this->getXp() >= 100) {
         ans = true;
+        this->lvl++;
+        this->xp = 0;
     }
     return ans;
 }
 
 std::string Pokemon::obtenerHabilidad(std::string nombre) {
-    std::string ans = "";
+    std::string ans;
     const int dano = rand();
     habilidades.push_back(new Habilidad(nombre, dano));
     ans += "El pokemon " + this->nombre + " obtuvo la habilidad " + nombre + " con daño " + std::to_string(dano) + "\n";
@@ -135,3 +138,31 @@ std::string Pokemon::mostrarInfo() {
 std::vector<Truco *> Pokemon::getTrucos() {
     return this->trucos;
 }
+
+std::string Pokemon::obtenerTruco(std::string nombre) {
+    std::string ans;
+    trucos.push_back(new Truco(nombre, rand(), rand()));
+    ans += "El pokemon " + this->nombre + " obtuvo el truco " + nombre + "\n";
+    return ans;
+}
+
+std::string Pokemon::infoTrucos() {
+    std::string ans;
+
+    for (int i = 0; i < trucos.size(); i++) {
+        ans += trucos[i]->infoTruco();
+    }
+
+    return ans += "\n";
+}
+
+std::string Pokemon::infoHabilidades() {
+    std::string ans;
+    for (int i = 0; i < habilidades.size(); i++) {
+        ans += habilidades[i]->infoHabilidad();
+    }
+    return ans += "\n";
+}
+
+
+

@@ -25,3 +25,12 @@ void Habilidad::setDano(int dano) {
 void Habilidad::setNombre(std::string nombre) {
     this->nombre = nombre;
 }
+
+std::string Habilidad::infoHabilidad() {
+    std::string ans;
+
+    ans += "Nombre: " + this->nombre + "\n";
+    ans += "Daño: " + std::to_string(this->daño) + "\n";
+
+    return ans;
+}

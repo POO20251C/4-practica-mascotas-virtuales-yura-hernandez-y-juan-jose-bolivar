@@ -21,6 +21,8 @@ class Habilidad {
 
     void setDano(int dano);
     void setNombre(std::string nombre);
+
+    std::string infoHabilidad();
 };
 
 

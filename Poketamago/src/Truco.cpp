@@ -4,6 +4,8 @@
 
 #include "Truco.h"
 
+#include <charconv>
+
 Truco::Truco(std::string nombre, int xp, int animo){
   this->nombre = nombre;
   this->xp = xp;
@@ -34,4 +36,14 @@ void Truco::setXp(int xp) {
   this->xp = xp;
 }
 
+std::string Truco::infoTruco() {
+  std::string ans;
+
+  ans += "Nombre: " + this->nombre + "\n";
+  ans += "Animo: " + std::to_string(this->animo) + "\n";
+  ans += "Xp: " + std::to_string(this->xp) + "\n";
+
+  return ans;
+
+}
 

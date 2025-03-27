@@ -25,6 +25,8 @@ class Truco{
     void setXp(int xp);
     void setAnimo(int animo);
 
+  std::string infoTruco();
+
 
 };
 
