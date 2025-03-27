@@ -29,3 +29,9 @@
 104	2571	7647402249495490	CMakeFiles/Poketamago.dir/src/Entrenador.cpp.obj	ca3fd14b3064c158
 26	3008	7647402248718804	CMakeFiles/Poketamago.dir/main.cpp.obj	9b6ea334c34f71af
 3008	3737	7647402278530474	Poketamago.exe	68201cfc30fdbe53
+33479	35633	7648208958008096	CMakeFiles/Poketamago.dir/src/Habilidad.cpp.obj	833910fcd542fd59
+33490	35794	7648208958118582	CMakeFiles/Poketamago.dir/src/Pokemon.cpp.obj	331ee150c2a93d8a
+33501	35902	7648208958234841	CMakeFiles/Poketamago.dir/src/Entrenador.cpp.obj	ca3fd14b3064c158
+33511	37045	7648208958339335	CMakeFiles/Poketamago.dir/src/Truco.cpp.obj	e8c49758c2de59c5
+221	38329	7648208625422582	CMakeFiles/Poketamago.dir/main.cpp.obj	9b6ea334c34f71af
+38330	39618	7648209006516498	Poketamago.exe	68201cfc30fdbe53

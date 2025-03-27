@@ -15,6 +15,8 @@ Pokemon::Pokemon(std::string name, std::string entrenador) {
     this->hambre = 0;
     this->estadoDeAnimo = "Normal";
     this->trucos.push_back(new Truco("Almendruco", rand() % 50, rand() % 50));
+    this->vivo = true;
+    this->habilidades.push_back(new Habilidad("Placaje", 10));
 }
 
 Pokemon::~Pokemon() {
@@ -107,11 +109,10 @@ void Pokemon::setSalud(int salud) {
     this->salud = salud;
 }
 
-int Pokemon::usarHabilidad() {
+int Pokemon::usarHabilidad(int i) {
     int ans = 0;
-    for (int i = 0; i < habilidades.size(); i++) {
-        ans = habilidades[i]->getDano();
-    }
+    ans = habilidades[i]->getDano();
+
     return ans;
 }
 
@@ -163,6 +164,32 @@ std::string Pokemon::infoHabilidades() {
     }
     return ans += "\n";
 }
+
+bool Pokemon::getVivo() {
+    return this->vivo;
+}
+
+std::vector<Habilidad *> Pokemon::getHabilidades() {
+    return this->habilidades;
+}
+
+
+std::string Pokemon::recibirDano(int dano) {
+    std::string ans;
+    if (this->salud -= dano <= 0) {
+        this->salud = 0;
+        this->vivo = false;
+        ans += "El pokemon " + this->getName() + " recibio " + std::to_string(dano) + " y quedo fuera de combate\n";
+    }
+    else {
+        this->salud += dano;
+        ans += "El pokemon " + this->getName() + " recibio " + std::to_string(dano) + "\n";
+    }
+
+    return ans;
+}
+
+
 
 
 

@@ -30,6 +30,7 @@ class Entrenador {
     void setNombre(std::string nombre);
     void setDinero(int dinero);
 
+
     // getters
     std::string getNombre();
     int getDinero();
@@ -46,6 +47,8 @@ class Entrenador {
 
     std::string verPokemones();
     std::string alimentarPokemon(std::string nombre, Objeto* objeto);
+
+    void aumentarBatallas();
 
 
 

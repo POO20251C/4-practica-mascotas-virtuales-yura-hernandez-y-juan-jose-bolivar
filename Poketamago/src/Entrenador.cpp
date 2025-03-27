@@ -96,4 +96,9 @@ std::string Entrenador::alimentarPokemon(std::string nombre, Objeto* objeto) {
     return ans;
 }
 
+void Entrenador::aumentarBatallas() {
+    this->batallas = batallas +1;
+}
+
+
 
