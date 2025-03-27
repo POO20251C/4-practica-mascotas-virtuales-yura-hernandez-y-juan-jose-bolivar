@@ -33,6 +33,8 @@ class Entrenador {
     // getters
     std::string getNombre();
     int getDinero();
+    std::map<std::string, Pokemon* > getPokemones();
+    std::vector<std::pair<Objeto, int>> getObjetos();
 
     // metodos
     std::string verInformacionPokemon(std::string nombre);
@@ -42,6 +44,8 @@ class Entrenador {
     std::string agregarPokemon(std::string nombre);
     std::string agregarObjeto(int cantidad, Objeto objeto);
 
+    std::string verPokemones();
+    std::string alimentarPokemon(std::string nombre, Objeto* objeto);
 
 
 

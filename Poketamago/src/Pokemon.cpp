@@ -82,8 +82,9 @@ bool Pokemon::evolucionar() {
 
 std::string Pokemon::obtenerHabilidad(std::string nombre) {
     std::string ans = "";
-    habilidades.push_back(new Habilidad(nombre, rand()));
-    ans += "El pokemon " + this->nombre + " obtuvo la habilidad " + nombre;
+    const int dano = rand();
+    habilidades.push_back(new Habilidad(nombre, dano));
+    ans += "El pokemon " + this->nombre + " obtuvo la habilidad " + nombre + " con daño " + std::to_string(dano) + "\n";
     return ans;
 }
 
@@ -122,10 +123,15 @@ void Pokemon::setBarraDeAnimo(int barraDeAnimo) {
 std::string Pokemon::mostrarInfo() {
     std::string ans = "";
     ans += "Nombre: " + this->nombre + "\n";
+    ans += "PS: " + std::to_string(this->salud) + "\n";
     ans += "Lvl: " + std::to_string(this->lvl) + "\n";
     ans += "Xp: " + std::to_string(this->xp) + "\n";
     ans += "Hambre: " + std::to_string(this->hambre) + "\n";
     ans += "Estado Animo: " + this->estadoDeAnimo + "\n";
     ans += "Cantidad de habilidades: " + std::to_string(habilidades.size()) + "\n";
     return ans;
+}
+
+std::vector<Truco *> Pokemon::getTrucos() {
+    return this->trucos;
 }

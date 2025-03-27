@@ -68,3 +68,32 @@ std::string Entrenador::verInformacionGeneral() {
 std::string Entrenador::verInformacionPokemon(std::string nombre) {
     return this->pokemones[nombre]->mostrarInfo();
 }
+
+std::string Entrenador::verPokemones() {
+    string ans;
+    for (const auto &i : this->pokemones) {
+        ans += i.second->mostrarInfo() + "\n";
+    }
+    return ans += "\n";
+}
+
+
+std::map<std::string, Pokemon *> Entrenador::getPokemones() {
+    return this->pokemones;
+}
+
+std::vector<std::pair<Objeto, int> > Entrenador::getObjetos() {
+    return this->objetos;
+}
+
+std::string Entrenador::alimentarPokemon(std::string nombre, Objeto* objeto) {
+    string ans;
+    this->pokemones[nombre]->setHambre(this->pokemones[nombre]->getHambre() + objeto->getSaciedad());
+    this->pokemones[nombre]->setXp(this->pokemones[nombre]->getXp() + objeto->getXp());
+    this->pokemones[nombre]->setSalud(this->pokemones[nombre]->getSalud() + objeto->getSalud());
+
+    ans += "El pokemon " + nombre + " a ganado " + to_string(objeto->getXp()) + " de XP y ha aumentado su salud en " + to_string(objeto->getSalud()) + "PS\n";
+    return ans;
+}
+
+

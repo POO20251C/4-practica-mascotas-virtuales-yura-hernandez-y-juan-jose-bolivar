@@ -17,15 +17,17 @@ private:
   int saciedad;
   int xp;
   int stock;
+  int salud;
 
 public:
 
-  Objeto(string nombre, int precio, int saciedad, int xp, int stock);
+  Objeto(string nombre, int precio, int saciedad, int xp, int stock, int salud);
   string getNombre();
   int getPrecio();
   int getSaciedad();
   int getXp();
   int getStock();
+  int getSalud();
 
   void setNombre(string nombre);
   void setPrecio(int precio);

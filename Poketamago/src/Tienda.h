@@ -26,5 +26,7 @@ class Tienda {
     void agregarObjeto(Objeto* objeto);
     void comprarObjeto(std::string nombre, int cantidad);
 
+    string mostrarObjetos();
+
 };
 #endif //TIENDA_H

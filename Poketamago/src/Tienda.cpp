@@ -28,3 +28,11 @@ void Tienda::setVectorObjetos(std::vector<Objeto *> nuevosObjetos) {
     // Funciona para cargar archivos de guardado.
     this->disponibles = nuevosObjetos;
 }
+
+string Tienda::mostrarObjetos() {
+    string ans = "#       Nombre      Disponible\n";
+    for (int i = 0; i < this->disponibles.size(); i++) {
+        ans += to_string(i+1)+ ". " + disponibles[i]->getNombre() + " " + to_string(disponibles[i]->getStock()) + "\n";
+    }
+    return ans;
+}

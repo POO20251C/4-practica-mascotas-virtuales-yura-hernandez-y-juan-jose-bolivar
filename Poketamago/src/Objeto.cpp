@@ -6,12 +6,13 @@
 #include <string>
 
 
-Objeto::Objeto(std::string nombre, int precio, int saciedad, int xp, int stock) {
+Objeto::Objeto(std::string nombre, int precio, int saciedad, int xp, int stock, int salud) {
     this->nombre = nombre;
     this->precio = precio;
     this->saciedad = saciedad;
     this->xp = xp;
     this->stock = stock;
+    this->salud = salud;
 }
 std::string Objeto::getNombre()  {
     return nombre;
@@ -52,4 +53,8 @@ void Objeto::setXp(int xp) {
 
 void Objeto::setStock(int stock) {
     this->stock = stock;
+}
+
+int Objeto::getSalud() {
+    return salud;
 }

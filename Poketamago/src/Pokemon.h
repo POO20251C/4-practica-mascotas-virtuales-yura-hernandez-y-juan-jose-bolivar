@@ -41,6 +41,7 @@ class Pokemon {
   int getSalud();
   std::string mostrarHabilidades();
   std::string mostrarTrucos();
+  std::vector<Truco*> getTrucos();
 
   // setters
   void setBarraDeAnimo(int barraDeAnimo);
@@ -55,6 +56,7 @@ class Pokemon {
   int usarHabilidad();
   std::string obtenerHabilidad(std::string nombre);
   std::string mostrarInfo();
+
 
   bool evolucionar();
 };
