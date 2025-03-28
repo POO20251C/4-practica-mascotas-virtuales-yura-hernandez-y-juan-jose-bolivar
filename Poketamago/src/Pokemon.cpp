@@ -193,6 +193,11 @@ std::string Pokemon::recibirDano(int dano) {
     return ans;
 }
 
+std::string Pokemon::infoHabilidad(const int i) const {
+    return habilidades[i]->infoHabilidad();
+}
+
+
 
 
 

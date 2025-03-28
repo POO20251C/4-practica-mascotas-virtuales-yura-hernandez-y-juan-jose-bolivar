@@ -64,6 +64,7 @@ class Pokemon {
   std::string infoTrucos();
   std::string infoHabilidades();
   std::string recibirDano(int dano);
+  std::string infoHabilidad(int i) const;
 
 
   bool evolucionar();

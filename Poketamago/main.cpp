@@ -162,6 +162,7 @@ int main() {
                         else if (comandoEntrenador == "2") {
                             string nombrePokemontruco;
                             cout << "Que pokemon va a hacer el truco?\n";
+
                             cout << entrenadoresEnJuego[nombre]->verPokemones() << endl;
 
                             cout << "Ingrese el nombre: ";
@@ -169,23 +170,23 @@ int main() {
 
                             for (const auto& k: entrenadoresEnJuego[nombre]->getPokemones()) {
                                 if (k.second->getName() == nombrePokemontruco) {
-                                    string truco;
+                                    int truco;
                                     bool trucoEncontrado = false;
                                     vector<Truco*> trucos = k.second->getTrucos();
                                     cout << k.second->mostrarTrucos();
 
-                                    cout << "Ingrese el nombre del truco a realizar: ";
+                                    cout << "Seleccione el truco: ";
                                     cin >> truco;
-                                    // ARREGLAR ESTOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO
                                     for (const auto& t: trucos) {
-                                        if (truco == t->getNombre()) {
+                                        if (truco <= 1 || truco >= trucos.size() ) {
                                             trucoEncontrado = true;
                                         }
+
                                     }
                                     if (!trucoEncontrado) {
                                         cout << "El truco no existe\n";
                                     }else {
-                                        cout << k.second->hacerTruco(truco) << endl;
+                                        cout << k.second->hacerTruco(trucos[truco - 1]->getNombre()) << endl;
                                     }
                                 }
                             }
@@ -202,7 +203,10 @@ int main() {
                             if (entrenadoresEnJuego[nombre]->getPokemones()[nombrePokemonObjeto] != nullptr) {
                                 string objetoADar;
                                 bool seEncontro = false;
+
+
                                 cout << entrenadoresEnJuego[nombre]->verObjetos();
+
 
                                 cout << "Ingrese el nombre del objeto: ";
                                 cin >> objetoADar;
@@ -352,7 +356,7 @@ int main() {
                                         int habilidadSeleccionada;
 
                                         for (int i = 0; i < pokemonesJugador[opcionJugador - 1]->getHabilidades().size(); i++) {
-                                            cout << i + 1 << ". \n" <<pokemonesJugador[opcionJugador - 1]->infoHabilidades() << endl;
+                                            cout << i + 1 << ". \n" <<pokemonesJugador[opcionJugador - 1]->infoHabilidad(i) << endl;
                                         }
 
                                         cout << "Selecciona una habilidad: ";
@@ -389,7 +393,6 @@ int main() {
                                 }
 
                                 cout << endl;
-                                cout << "Turno del oponente\n";
 
 
                                 // Oponente. Quiero que sea aleatorio
@@ -401,10 +404,12 @@ int main() {
 
                                 int indiceHabilidad = rand() % pokemonOponente->getHabilidades().size();
 
-                                cout << ObjetivoOponente->recibirDano(pokemonOponente->usarHabilidad(indiceHabilidad)) << endl;
+                                if (pokemonOponente->getVivo()) {
+                                    cout << "Turno del oponente\n";
+                                    cout << ObjetivoOponente->recibirDano(pokemonOponente->usarHabilidad(indiceHabilidad)) << endl;
+                                }
 
                                 // Verificar quien gana
-
                                 int killO = 0;
                                 for (int k = 0; k < pokemonesOponente.size(); k++) {
                                     if (!pokemonesOponente[k]->getVivo()) {
@@ -438,6 +443,7 @@ int main() {
                         }
                         else {
                             cout << "Opcion no valida\n";
+                            cin.clear();
                         }
                         if (cin.fail()) {
                             cin.clear();
