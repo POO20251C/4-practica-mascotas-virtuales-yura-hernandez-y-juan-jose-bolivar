@@ -9,6 +9,7 @@ Entrenador::Entrenador(std::string nombre) {
     this->dinero = 500;
     this->trucosTotales = 0;
     this->objetosComprados = 0;
+    this->batallas = 0;
 }
 
 Entrenador::~Entrenador() {
