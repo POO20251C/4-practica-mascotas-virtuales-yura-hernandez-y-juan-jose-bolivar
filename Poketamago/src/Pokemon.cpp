@@ -207,6 +207,7 @@ std::string Pokemon::recibirDano(int dano) {
     else {
         this->salud -= dano;
         ans += "El pokemon " + this->getName() + " recibio " + std::to_string(dano) + " de daño\n";
+        this->barraDeAnimo -= 10;
     }
 
     return ans;
