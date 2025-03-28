@@ -36,3 +36,7 @@ string Tienda::mostrarObjetos() {
     }
     return ans;
 }
+
+std::vector<Objeto*>* Tienda::getDisponibles() {
+    return &disponibles;
+}

@@ -25,6 +25,9 @@ class Tienda {
 
     void agregarObjeto(Objeto* objeto);
     void comprarObjeto(std::string nombre, int cantidad);
+    vector<Objeto*>* getDisponibles();
+
+
 
     string mostrarObjetos();
 
