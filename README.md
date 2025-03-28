@@ -22,9 +22,12 @@ A continuación se explica brevemente cada sección.
 
 1. Agregas un pokemon a tu equipo (solo ingresas el nombre).
 2. Un pokemon hará un truco (Sube la xp y el animo)
-5. Dar un objeto a un pokemon (Baja el hambre, sube el animo y sube la xp)
-6. 
-- Les das objetos.
+3. Dar un objeto a un pokemon (Baja el hambre, sube el animo y sube la xp)
+4. Vas a el menu de la tienda
+5. Inicias un combate (Contra un entrenador que existe y tenga pokemones)
+6. Ves la informacion del entrenador (Jugador)
+7. Ves la informacion de los pokemones del jugador
+8. Sales de este menú
 
 Si suben de nivel, a veces evolucionan y aprenden habilidades o trucos (sí, como un perro).
 
@@ -35,8 +38,11 @@ Si suben de nivel, a veces evolucionan y aprenden habilidades o trucos (sí, com
 
 **Tienda:**
 
-- Compras objetos con el dinero de las peleas.
+1. Compras un objeto de la tienda
+2. Listas los objetos de la tienda
+3. Sales de este menú
 
+- Compras objetos con el dinero de las peleas.
 - Tiene cosas como "Caramelo" (para subir nivel) y "Caci" (que nadie sabe qué es).
 
 **Registro**:
