@@ -21,8 +21,6 @@ void guardarHistorial(map<string, Entrenador*>& entrenadoresEnJuego) {
     ofstream archivo("../saves/historial.txt");
     if (archivo.is_open()) {
 
-        cout << "Se abrio el archivo\n";
-
         if (!entrenadoresEnJuego.empty()) {
 
             archivo << "Historial de Entrenadores y sus Pokémon:\n";
@@ -37,13 +35,11 @@ void guardarHistorial(map<string, Entrenador*>& entrenadoresEnJuego) {
 
         }
         archivo.close();
-        cout << "archivo guardado en " << filesystem::absolute("saves/historial.txt") << "\n";
-
-
+        cout << "Historial guardado en historial.txt\n";
     }
 
 
-    cout << "Historial guardado en historial.txt\n";
+
 
 }
 
