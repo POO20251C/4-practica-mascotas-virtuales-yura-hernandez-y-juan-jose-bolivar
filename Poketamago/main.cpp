@@ -4,6 +4,7 @@
 #include <fstream>
 #include <cstdlib>
 #include <ctime>
+#include <filesystem>
 
 
 #include "src/Entrenador.h"
@@ -15,20 +16,35 @@
 using namespace std;
 
 void guardarHistorial(map<string, Entrenador*>& entrenadoresEnJuego) {
-    ofstream archivo("saves/historial.txt");
+    filesystem::create_directory("saves");
 
-    archivo << "Historial de Entrenadores y sus Pokémon:\n";
-    for ( auto& [nombre, entrenador] : entrenadoresEnJuego) {
-        archivo << "Entrenador: " << nombre << "\n";
-        archivo << "Pokémon:\n";
-        for ( auto& [nombrePokemon, pokemon] : entrenador->getPokemones()) {
-            archivo << "- " << pokemon->getName() << "\n";
+    ofstream archivo("../saves/historial.txt");
+    if (archivo.is_open()) {
+
+        cout << "Se abrio el archivo\n";
+
+        if (!entrenadoresEnJuego.empty()) {
+
+            archivo << "Historial de Entrenadores y sus Pokémon:\n";
+            for ( auto& [nombre, entrenador] : entrenadoresEnJuego) {
+                archivo << "Entrenador: " << nombre << "\n";
+                archivo << "Pokémon:\n";
+                for ( auto& [nombrePokemon, pokemon] : entrenador->getPokemones()) {
+                    archivo << "- " << pokemon->getName() << "\n";
+                }
+                archivo << "--------------------------\n";
+            }
+
         }
-        archivo << "--------------------------\n";
+        archivo.close();
+        cout << "archivo guardado en " << filesystem::absolute("saves/historial.txt") << "\n";
+
+
     }
 
-    archivo.close();
+
     cout << "Historial guardado en historial.txt\n";
+
 }
 
 void quitarPokemonDeVector(std::vector<Pokemon*>& lista) {
