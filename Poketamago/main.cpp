@@ -58,28 +58,17 @@ string stringToLower(string s) {
     return ans;
 }
 
-void guardarHistorial(map<string, Entrenador*>& entrenadoresEnJuego) {
-    ofstream archivo("historial.txt");
-
-    archivo << "Historial de Entrenadores y sus Pokémon:\n";
-    for ( auto& [nombre, entrenador] : entrenadoresEnJuego) {
-        archivo << "Entrenador: " << nombre << "\n";
-        archivo << "Pokémon:\n";
-        for ( auto& [nombrePokemon, pokemon] : entrenador->getPokemones()) {
-            archivo << "- " << pokemon->getName() << "\n";
-        }
-        archivo << "--------------------------\n";
-    }
-
-    archivo.close();
-    cout << "Historial guardado en historial.txt\n";
-}
-
 int main() {
 
     srand(time(nullptr));
 
+    Objeto caci("Caci", 3, 20, 20, 50, 40);
+    Objeto caramelo("Caramelo", 4, 2, 100, 50, 1);
+
     Tienda t1("Tienda");
+
+    t1.agregarObjeto(&caramelo);
+    t1.agregarObjeto(&caci);
 
     map<string,Entrenador*> entrenadoresEnJuego;
 
@@ -149,7 +138,6 @@ int main() {
                                     cin >> nombreTruco;
                                     cout << i.second->obtenerTruco(nombreTruco);
                                 }
-
                             }
                         }
 
@@ -246,10 +234,10 @@ int main() {
 
                             bool enTienda = true;
                             while (enTienda) {
-                                string opcionTienda;
+                                string opcionTienda = "";
                                 cout << "1. Comprar Objeto\n2. Listar objetos\n3. Salir\n";
                                 cout << "Ingrese una opcion: ";
-                                cin >> opcionTienda;
+                                getline(cin, opcionTienda);
 
                                 if (opcionTienda == "1") {
                                     std::string nombreObjeto;
@@ -277,6 +265,7 @@ int main() {
                                             } else {
                                                 std::cout << "No hay suficiente stock disponible en la tienda.\n";
                                             }
+                                            // Lo hizo Boli no yo.
                                             break;
                                         }
                                     }
@@ -469,7 +458,7 @@ int main() {
             cout << endl;
         }
         else if (menu1 == "4") {
-            cout << "Saliendo del programa";
+            cout << "Saliendo del programa\n";
             entrenadores = false;
         }
         else {
@@ -477,6 +466,10 @@ int main() {
         }
 
     }
+
+    cout << endl;
+
+    guardarHistorial(entrenadoresEnJuego);
 
     for (auto& e : entrenadoresEnJuego) {
         delete e.second;
