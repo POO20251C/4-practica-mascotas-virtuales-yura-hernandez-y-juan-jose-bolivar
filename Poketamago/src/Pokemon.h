@@ -24,6 +24,7 @@ class Pokemon {
   int xp;
   int salud;
 
+
   bool vivo;
 
   std::vector<Habilidad*> habilidades;
@@ -46,6 +47,7 @@ class Pokemon {
   std::vector<Truco*> getTrucos();
   bool getVivo();
   std::vector<Habilidad*> getHabilidades();
+  std::string getEstadoDeAnimo();
 
   // setters
   void setBarraDeAnimo(int barraDeAnimo);

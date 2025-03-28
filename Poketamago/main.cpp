@@ -205,6 +205,7 @@ int main() {
                                         cout << "El truco no existe\n";
                                     }else {
                                         cout << k.second->hacerTruco(trucos[truco - 1]->getNombre()) << endl;
+                                        cout << "El estado de animo cambio a: " << k.second->getEstadoDeAnimo()<< endl;
                                     }
                                 }
                             }
