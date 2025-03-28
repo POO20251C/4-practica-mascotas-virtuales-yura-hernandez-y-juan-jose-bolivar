@@ -47,6 +47,10 @@ int Pokemon::getHambre() {
     return this->hambre;
 }
 
+std::string Pokemon::getEstadoDeAnimo() {
+    return this->estadoDeAnimo;
+}
+
 std::string Pokemon::mostrarHabilidades() {
     std::string ans = "#        Nombre          dano";
     for (int i = 0; i < habilidades.size(); i++) {

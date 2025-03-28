@@ -197,8 +197,6 @@ int main() {
                                     for (const auto& t: trucos) {
                                         if (truco <= 1 || truco >= trucos.size() ) {
                                             trucoEncontrado = true;
-                                            cout << "El estado de ánimo ahora es: " << k.second->hacerTruco(nombrePokemontruco) << "!" << endl;
-
                                         }
 
                                     }
@@ -206,6 +204,7 @@ int main() {
                                         cout << "El truco no existe\n";
                                     }else {
                                         cout << k.second->hacerTruco(trucos[truco - 1]->getNombre()) << endl;
+                                        cout << "El estado de animo cambio a: " << k.second->getEstadoDeAnimo()<< endl;
                                     }
                                 }
                             }
