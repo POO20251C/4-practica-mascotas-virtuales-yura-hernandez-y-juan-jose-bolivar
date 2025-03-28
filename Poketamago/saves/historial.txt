@@ -1,4 +1,26 @@
 Historial de Entrenadores y sus Pokémon:
-Entrenador: Yura
-Pokémon:
+Nombre: Yura
+Cantidad de pokemones: 2
+Cantidad de objetos: 0
+Trucos realizados: 0
+Objetos comprados: 0
+Batallas ganadas: 0
+
+Pokémones:
+Nombre: Miguel
+PS: 100
+Lvl: 0
+Xp: 0
+Hambre: 0
+Estado Animo: Normal
+Cantidad de habilidades: 1
+
+Nombre: Rebecca
+PS: 100
+Lvl: 0
+Xp: 0
+Hambre: 0
+Estado Animo: Normal
+Cantidad de habilidades: 1
+
 --------------------------

@@ -25,10 +25,11 @@ void guardarHistorial(map<string, Entrenador*>& entrenadoresEnJuego) {
 
             archivo << "Historial de Entrenadores y sus Pokémon:\n";
             for ( auto& [nombre, entrenador] : entrenadoresEnJuego) {
-                archivo << "Entrenador: " << nombre << "\n";
-                archivo << "Pokémon:\n";
+                archivo << "Entrenador:" << "\n";
+                archivo << entrenador->verInformacionGeneral() + "\n";
+                archivo << "Pokémones:\n";
                 for ( auto& [nombrePokemon, pokemon] : entrenador->getPokemones()) {
-                    archivo << "- " << pokemon->getName() << "\n";
+                    archivo << pokemon->mostrarInfo() << "\n";
                 }
                 archivo << "--------------------------\n";
             }
