@@ -2,7 +2,9 @@
 #include <vector>
 #include <map>
 #include <fstream>
-#include <random>
+#include <cstdlib>
+#include <ctime>
+
 
 #include "src/Entrenador.h"
 #include "src/Pokemon.h"
@@ -11,6 +13,23 @@
 #include "src/Tienda.h"
 
 using namespace std;
+
+void guardarHistorial(map<string, Entrenador*>& entrenadoresEnJuego) {
+    ofstream archivo("saves/historial.txt");
+
+    archivo << "Historial de Entrenadores y sus Pokémon:\n";
+    for ( auto& [nombre, entrenador] : entrenadoresEnJuego) {
+        archivo << "Entrenador: " << nombre << "\n";
+        archivo << "Pokémon:\n";
+        for ( auto& [nombrePokemon, pokemon] : entrenador->getPokemones()) {
+            archivo << "- " << pokemon->getName() << "\n";
+        }
+        archivo << "--------------------------\n";
+    }
+
+    archivo.close();
+    cout << "Historial guardado en historial.txt\n";
+}
 
 void quitarPokemonDeVector(std::vector<Pokemon*>& lista) {
     for (auto it = lista.begin(); it != lista.end(); ) {
@@ -23,7 +42,7 @@ void quitarPokemonDeVector(std::vector<Pokemon*>& lista) {
     }
 }
 
-vector<Pokemon*> convertirAVector(map<string, Pokemon*> lista) {
+vector<Pokemon*> convertirAVector(const map<string, Pokemon*> &lista) {
     vector<Pokemon*> pokemones;
     for (const auto &pokemon : lista) {
         pokemones.push_back(pokemon.second);
@@ -41,7 +60,7 @@ string stringToLower(string s) {
 
 int main() {
 
-
+    srand(time(nullptr));
 
     Tienda t1("Tienda");
 
@@ -92,12 +111,10 @@ int main() {
             string nombre;
             cout << "Ingrese el nombre del entrenador: ";
             cin >> nombre;
-            for (int i = 0; i < entrenadoresEnJuego.size(); i++) {
-                if (entrenadoresEnJuego[nombre] != nullptr) {
+            if (entrenadoresEnJuego.find(nombre) != entrenadoresEnJuego.end()) {
+                // Menu entrenador
                     bool menuEntrenador = true;
-                    // Menu entrenador
-                    while (menuEntrenador) {
-
+                    while (menuEntrenador == true) {
                         for (const auto &i : entrenadoresEnJuego[nombre]->getPokemones()) {
                             if (i.second->evolucionar()) {
                                 if (i.second->getLvl() % 2 == 0) {
@@ -122,16 +139,21 @@ int main() {
                         string comandoEntrenador;
                         cout << "1. Agregar pokemon\n2. Hacer un truco con un pokemon\n3. Dar objeto a un pokemon\n4. Ir a la tienda\n5. Hacer un combate\n6. Salir\n";
                         cout << "Ingrese un comando: ";
-                        cin >> comandoEntrenador;
+                        cin.ignore();
+                        getline(cin, comandoEntrenador);
 
-                        if (comandoEntrenador == "1") {
+                        if (comandoEntrenador == "6") {
+                            menuEntrenador = false;
+                            cout << "Saliendo al menu principal...\n";
+                            cout << endl;
+                        }
+                        else if (comandoEntrenador == "1") {
                             string nombrePokemonNuevo;
                             cout << "Ingrese el nombre del pokemon: ";
                             cin >> nombrePokemonNuevo;
 
                             cout << entrenadoresEnJuego[nombre]->agregarPokemon(nombrePokemonNuevo) << endl;
                         }
-
                         else if (comandoEntrenador == "2") {
                             string nombrePokemontruco;
                             cout << "Que pokemon va a hacer el truco?\n";
@@ -163,7 +185,6 @@ int main() {
                                 }
                             }
                         }
-
                         else if (comandoEntrenador == "3") {
                             string nombrePokemonObjeto;
 
@@ -181,7 +202,7 @@ int main() {
                                 cout << "Ingrese el nombre del objeto: ";
                                 cin >> objetoADar;
 
-                                for (int j = 0; entrenadoresEnJuego[nombre]->getObjetos().size() > j; j++) {
+                                for (int i = 0; entrenadoresEnJuego[nombre]->getObjetos().size() > i; i++) {
                                     if (entrenadoresEnJuego[nombre]->getObjetos()[i].first.getNombre() == objetoADar) {
                                         cout << entrenadoresEnJuego[nombre]->alimentarPokemon(nombrePokemonObjeto, &entrenadoresEnJuego[nombre]->getObjetos()[i].first);
                                         entrenadoresEnJuego[nombre]->getObjetos()[i].second - 1;
@@ -204,7 +225,6 @@ int main() {
                             }
 
                         }
-
                         else if (comandoEntrenador == "4") {
 
                             bool enTienda = true;
@@ -230,7 +250,6 @@ int main() {
                                     cout << "Opcion no valida.\n";
                                 }
                             }
-
                         }
                         else if (comandoEntrenador == "5") {
                             string nombreOponente;
@@ -241,25 +260,30 @@ int main() {
                             vector<Pokemon*> pokemonesOponente;
 
                             for (const auto &e : entrenadoresEnJuego) {
-                                cout << e.first << endl;
+                                if (e.first != nombre) {
+                                    cout << e.first << endl;
+                                }
                             }
                             cout << endl;
 
                             cout << "Ingresa el nombre de tu oponente: ";
                             cin >> nombreOponente;
 
-                            if (entrenadoresEnJuego[nombreOponente] != nullptr) {
-                                cout << "No se encontro el oponente\n";
+                            if (entrenadoresEnJuego.find(nombreOponente) == entrenadoresEnJuego.end()) {
+                                cout << "No se encontró el oponente\n";
                             }
                             else if (entrenadoresEnJuego[nombre]->getPokemones().empty()) {
                                 cout << "No tienes pokemones para combatir\n";
                             }
-                            else if (oponente->getPokemones().empty()) {
-                                cout << "El oponente no tiene pokemones para combatir\n";
-                            }
+
                             else {
                                 oponente = entrenadoresEnJuego[nombreOponente];
                                 vamoAJugar = true;
+                            }
+
+                            if (oponente->getPokemones().empty()) {
+                                cout << "El oponente no tiene pokemones para combatir\n";
+                                vamoAJugar = false;
                             }
 
 
@@ -268,12 +292,9 @@ int main() {
                                  pokemonesOponente = convertirAVector(oponente->getPokemones());
                             }
 
-
+                            int muertosOponente = 0, muertosJugador = 0;
                             while (vamoAJugar) {
                                 // Juego
-
-                                quitarPokemonDeVector(pokemonesJugador);
-                                quitarPokemonDeVector(pokemonesOponente);
 
                                 pokemonesVivos = pokemonesJugador.size();
                                 pokemonesVivosOponente = pokemonesOponente.size();
@@ -281,34 +302,39 @@ int main() {
                                 cout << entrenadoresEnJuego[nombre]->verPokemones();
                                 cout << endl;
 
-                                for (auto & j : pokemonesJugador) {
-                                    cout << i+1 << ". " << j->getName() << endl;
+
+                                for (int j = 0; j < pokemonesJugador.size(); j++) {
+                                    cout << j + 1 << ". " << pokemonesJugador[j]->getName() << endl;
                                 }
                                 cout << endl;
 
-                                cout << "Ingresa una opcion: ";
+                                cout << "Selecciona el pokemon que va a atacar: ";
                                 cin >> opcionJugador;
 
-                                if ( opcionJugador <= pokemonesJugador.size() && pokemonesJugador[opcionJugador-1] != nullptr ) {
-
-                                    if (pokemonesJugador[opcionJugador-1]->getVivo()) {
+                                if (opcionJugador >= 1 || opcionJugador <= pokemonesJugador.size() ) {
+                                    Pokemon * pokemonSeleccionado = pokemonesJugador[opcionJugador];
+                                    if (pokemonesJugador[opcionJugador - 1]->getVivo()) {
                                         int habilidadSeleccionada;
-                                        cout << i+1 << ". \n" <<pokemonesJugador[opcionJugador-1]->infoHabilidades() << endl;
+
+                                        for (int i = 0; i < pokemonesJugador[opcionJugador - 1]->getHabilidades().size(); i++) {
+                                            cout << i + 1 << ". \n" <<pokemonesJugador[opcionJugador - 1]->infoHabilidades() << endl;
+                                        }
+
                                         cout << "Selecciona una habilidad: ";
                                         cin >> habilidadSeleccionada;
 
-                                        if (habilidadSeleccionada <= pokemonesJugador[opcionJugador-1]->getHabilidades().size() && pokemonesJugador[opcionJugador-1]->getHabilidades()[habilidadSeleccionada-1] != nullptr ) {
+                                        if (habilidadSeleccionada >= 1 || habilidadSeleccionada <= pokemonSeleccionado->getHabilidades().size()) {
                                             int objetivoJugador;
-                                            for (auto & k : pokemonesOponente) {
-                                                cout << i+1 << ". " << k->getName() << " Vida: " << k->getSalud() << endl;
+                                            for (int o = 0; o < pokemonesOponente.size(); o++) {
+                                                cout << o + 1 << ". " << pokemonesOponente[o]->getName() << " Vida: " << pokemonesOponente[o]->getSalud() << endl;
                                             }
 
                                             cout << endl;
                                             cout << "Selecciona un objetivo: ";
                                             cin >> objetivoJugador;
 
-                                            if (pokemonesOponente[objetivoJugador-1]->getVivo() && pokemonesOponente[objetivoJugador-1] != nullptr ) {
-                                                cout << pokemonesOponente[objetivoJugador-1]->recibirDano(pokemonesJugador[opcionJugador-1]->usarHabilidad(habilidadSeleccionada)) << endl;
+                                            if (objetivoJugador >= 1 || objetivoJugador <= pokemonesOponente.size()) {
+                                                cout << pokemonesOponente[objetivoJugador - 1]->recibirDano(pokemonesJugador[opcionJugador - 1]->usarHabilidad(habilidadSeleccionada - 1)) << endl;
                                             }
                                             else {
                                                 cout << "Objetivo no valido, pierdes el turno\n";
@@ -320,7 +346,7 @@ int main() {
                                         }
                                     }
                                     else {
-                                        cout << "El pokemon esta fuera de batalla.\nPierdes el turno";
+                                        cout << "El pokemon seleccionado esta fuera de batalla.\nPierdes el turno";
                                     }
                                 }
                                 else {
@@ -332,23 +358,39 @@ int main() {
 
 
                                 // Oponente. Quiero que sea aleatorio
-                                random_device rd;
-                                mt19937 rng(rd());
-                                uniform_int_distribution<size_t> dist(0, pokemonesOponente.size()-1);
-                                Pokemon* pokemonOponente = pokemonesOponente[dist(rng)];
-                                uniform_int_distribution<size_t> objetivoOponente(0, pokemonesJugador.size()-1);
-                                Pokemon * pokemonObjetivoOponente = pokemonesJugador[objetivoOponente(rng)];
-                                uniform_int_distribution<size_t> habilidad(0, pokemonOponente->getHabilidades().size()-1);
+                                int indicePokemonOponente = rand() % pokemonesOponente.size();
+                                Pokemon * pokemonOponente = pokemonesOponente[indicePokemonOponente];
 
-                                cout << pokemonObjetivoOponente->recibirDano(pokemonOponente->usarHabilidad(habilidad(rng))) << endl;
+                                int indiceObjetivo = rand() % pokemonesJugador.size();
+                                Pokemon* ObjetivoOponente = pokemonesJugador[indiceObjetivo];
 
+                                int indiceHabilidad = rand() % pokemonOponente->getHabilidades().size();
+
+                                cout << ObjetivoOponente->recibirDano(pokemonOponente->usarHabilidad(indiceHabilidad)) << endl;
 
                                 // Verificar quien gana
-                                if (pokemonesVivos == 0 ) {
+
+                                int killO = 0;
+                                for (int k = 0; k < pokemonesOponente.size(); k++) {
+                                    if (!pokemonesOponente[k]->getVivo()) {
+                                        killO += 1;
+                                    }
+                                }
+                                muertosOponente = killO;
+
+                                int killJ = 0;
+                                for (int k = 0; k < pokemonesJugador.size(); k++) {
+                                    if (!pokemonesJugador[k]->getVivo()) {
+                                        killJ += 1;
+                                    }
+                                }
+                                muertosJugador = killJ;
+
+                                if (muertosJugador == pokemonesJugador.size() ) {
                                     cout << "Perdiste.\nGano " << oponente->getNombre() << ".\n";
                                     vamoAJugar = false;
                                 }
-                                else if (pokemonesVivosOponente == 0) {
+                                else if (muertosOponente == pokemonesOponente.size()) {
                                     cout << "Gano " << nombre << "\n";
                                     vamoAJugar = false;
                                     entrenadoresEnJuego[nombre]->aumentarBatallas();
@@ -358,35 +400,21 @@ int main() {
                                 }
 
                             }
-
                         }
-
-                        else if (comandoEntrenador == "6") {
-                            menuEntrenador = false;
-                        }
-
                         else {
                             cout << "Opcion no valida\n";
                         }
-
-
-
-
-
+                        if (cin.fail()) {
+                            cin.clear();
+                            cout << "Entrada inválida. Intenta de nuevo.\n";
+                            continue;
+                        }
                     }
-
-
-
-
-
-
-
                 }
                 else {
                     cout << "No se encontro el entrenador " + nombre << endl;
                     cout << "Volviendo al menu principal....\n";
                 }
-            }
         }
         else if (menu1 == "3") {
             for (const auto &i : entrenadoresEnJuego) {
@@ -404,6 +432,9 @@ int main() {
 
     }
 
+    for (auto& e : entrenadoresEnJuego) {
+        delete e.second;
+    }
 
     return 0;
 }
