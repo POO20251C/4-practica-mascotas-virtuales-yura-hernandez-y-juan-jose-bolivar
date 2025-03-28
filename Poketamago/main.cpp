@@ -180,6 +180,8 @@ int main() {
                                     for (const auto& t: trucos) {
                                         if (truco == t->getNombre()) {
                                             trucoEncontrado = true;
+                                            cout << "El estado de ánimo ahora es: " << k.second->hacerTruco(nombrePokemontruco) << "!" << endl;
+
                                         }
                                     }
                                     if (!trucoEncontrado) {

@@ -65,13 +65,28 @@ std::string Pokemon::mostrarTrucos() {
 
 std::string Pokemon::hacerTruco(std::string nombre) {
     std::string ans = "";
+    std::string estadoAnterior = this->estadoDeAnimo;
     for (int i = 0; i < trucos.size(); i++) {
         if (trucos[i]->getNombre() == nombre) {
             ans += this->nombre + " hizo " + trucos[i]->getNombre() + " y gano " + std::to_string(trucos[i]->getXp()) + "XP\n";
             this->xp += trucos[i]->getXp();
             this->barraDeAnimo += trucos[i]->getAnimo();
+
+            if (this->barraDeAnimo >= 66) {
+                this->estadoDeAnimo = "Excitadisimo";
+            } else if (this->barraDeAnimo >= 33 && this->barraDeAnimo <= 65) {
+                this->estadoDeAnimo = "Normal";
+            } else if (this->barraDeAnimo <= 32 ) {
+                this->estadoDeAnimo = "Triste";
+            }
+            return ans;
         }
     }
+
+    if (estadoAnterior != this->estadoDeAnimo) {
+        ans += "El estado de ánimo de " + this->nombre + " ahora es " + this->estadoDeAnimo + ".\n";
+    }
+
     return ans;
 }
 
