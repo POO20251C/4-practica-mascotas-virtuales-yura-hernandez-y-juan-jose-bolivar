@@ -58,6 +58,23 @@ string stringToLower(string s) {
     return ans;
 }
 
+void guardarHistorial(map<string, Entrenador*>& entrenadoresEnJuego) {
+    ofstream archivo("historial.txt");
+
+    archivo << "Historial de Entrenadores y sus Pokémon:\n";
+    for ( auto& [nombre, entrenador] : entrenadoresEnJuego) {
+        archivo << "Entrenador: " << nombre << "\n";
+        archivo << "Pokémon:\n";
+        for ( auto& [nombrePokemon, pokemon] : entrenador->getPokemones()) {
+            archivo << "- " << pokemon->getName() << "\n";
+        }
+        archivo << "--------------------------\n";
+    }
+
+    archivo.close();
+    cout << "Historial guardado en historial.txt\n";
+}
+
 int main() {
 
     srand(time(nullptr));
@@ -235,8 +252,37 @@ int main() {
                                 cin >> opcionTienda;
 
                                 if (opcionTienda == "1") {
-                                    // terminar esto
+                                    std::string nombreObjeto;
+                                    int cantidad;
 
+                                    std::cout << "Ingrese el nombre del objeto que desea comprar: ";
+                                    std::cin >> nombreObjeto;
+
+                                    std::cout << "Ingrese la cantidad que desea comprar: ";
+                                    std::cin >> cantidad;
+
+                                    bool encontrado = false;
+                                    for (auto &item : *t1.getDisponibles()) {
+
+                                        if (item->getNombre() == nombreObjeto) {
+                                            encontrado = true;
+                                            int costoTotal = item->getPrecio() * cantidad;
+                                            if (entrenadoresEnJuego[nombre]->getDinero() >= costoTotal && item->getStock() >= cantidad) {
+                                                entrenadoresEnJuego[nombre]->setDinero(entrenadoresEnJuego[nombre]->getDinero() - costoTotal);
+                                                entrenadoresEnJuego[nombre]->agregarObjeto(cantidad, *item);
+                                                item->setStock(item->getStock() - cantidad);
+                                                std::cout << "Compra exitosa! Has comprado " << cantidad << " " << nombreObjeto << " por " << costoTotal << " Oro.\n";
+                                            } else if (entrenadoresEnJuego[nombre]->getDinero() < costoTotal) {
+                                                std::cout << "No tienes suficiente dinero para comprar esta cantidad.\n";
+                                            } else {
+                                                std::cout << "No hay suficiente stock disponible en la tienda.\n";
+                                            }
+                                            break;
+                                        }
+                                    }
+                                    if (!encontrado) {
+                                        std::cout << "El objeto ingresado no existe en la tienda.\n";
+                                    }
                                 }
                                 else if (opcionTienda == "2") {
                                     cout << t1.mostrarObjetos();
